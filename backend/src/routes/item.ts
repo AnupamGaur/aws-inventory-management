@@ -15,12 +15,12 @@ const s3Config = new S3Client({
   }
 })
 
-const mybucket = process.env.AWS_BUCKET_NAME
+const mybucket = process.env.AWS_BUCKET_NAME!
 
 const upload = multer({
   storage: multerS3({
     s3: s3Config,
-    bucket: mybucket!,
+    bucket: mybucket,
     acl:"public-read",
     contentType: multerS3.AUTO_CONTENT_TYPE,
     key: (req, file, cb) => {
